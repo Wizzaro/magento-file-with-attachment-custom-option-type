@@ -1,0 +1,79 @@
+<?php
+/**
+ * Copyright © Wizzaro. All rights reserved.
+ */
+
+$option = $block->getOption();
+$fileInfo = $block->getFileInfo();
+$fileExists = $fileInfo->hasData();
+$fileName = 'options_' . $option->getId() . '_file';
+$fieldNameAction = $fileName . '_action';
+$fieldValueAction = $fileExists ? 'save_old' : 'save_new';
+$fileNamed = $fileName . '_name';
+
+$attachmentInfo = $block->escapeHtml($option->getAttachmentInfo());
+$attachmentLabel = $block->escapeHtml($option->getAttachmentLabel());
+$attachmentDownloadUrl = $block->getAttachmentDownloadUrl();
+
+$class = ($option->getIsRequire()) ? ' required' : '';
+?>
+
+<div class="field file<?= /* @escapeNotVerified */ $class ?>">
+    <label class="label" for="<?= /* @noEscape */ $fileName ?>" id="<?= /* @noEscape */ $fileName ?>-label">
+        <span><?= $block->escapeHtml($option->getTitle()) ?></span>
+        <?= /* @escapeNotVerified */ $block->getFormatedPrice() ?>
+    </label>
+    <?php
+    if ($fileExists) {
+        ?>
+        <div class="control">
+            <span class="<?= /* @noEscape */ $fileNamed ?>"><?= $block->escapeHtml($fileInfo->getTitle()) ?></span>
+            <a href="javascript:void(0)" class="label" id="change-<?= /* @noEscape */ $fileName ?>" >
+                <?= /* @escapeNotVerified */ __('Change') ?>
+            </a>
+            <?php 
+            if (!$option->getIsRequire()) {
+                ?>
+                <input type="checkbox" id="delete-<?= /* @escapeNotVerified */ $fileName ?>" />
+                <span class="label"><?= /* @escapeNotVerified */ __('Delete') ?></span>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    }
+    ?>
+    <div class="control" id="input-box-<?= /* @escapeNotVerified */ $fileName ?>"
+             data-mage-init='{"priceOptionFile":{
+                "fileName":"<?= /* @noEscape */ $fileName ?>",
+                "fileNamed":"<?= /* @noEscape */ $fileNamed ?>",
+                "fieldNameAction":"<?= /* @escapeNotVerified */ $fieldNameAction ?>",
+                "changeFileSelector":"#change-<?= /* @escapeNotVerified */ $fileName ?>",
+                "deleteFileSelector":"#delete-<?= /* @escapeNotVerified */ $fileName ?>"}
+             }'
+            <?= $fileExists ? 'style="display:none"' : '' ?>>
+        <input type="file"
+               name="<?= /* @escapeNotVerified */ $fileName ?>"
+               id="<?= /* @escapeNotVerified */ $fileName ?>"
+               class="product-custom-option<?= $option->getIsRequire() ? ' required' : '' ?>"
+               <?= $fileExists ? 'disabled="disabled"' : '' ?> />
+        <input type="hidden" name="<?= /* @escapeNotVerified */ $fieldNameAction ?>" value="<?= /* @escapeNotVerified */ $fieldValueAction ?>" />
+        <?php
+        if ($option->getFileExtension()) {
+            ?>
+            <p class="note">
+                <?= /* @escapeNotVerified */ __('Compatible file extensions to upload') ?>: <strong><?= /* @escapeNotVerified */ $option->getFileExtension() ?></strong>
+            </p>
+            <?php
+        }
+        if ($attachmentDownloadUrl) {
+            ?>
+            <p class="note">
+                <?= $attachmentInfo ?>
+                <a href="<?= $attachmentDownloadUrl ?>" target="_blank"><?= mb_strlen($attachmentLabel) > 0 ? $attachmentLabel : $block->getAttachmentTitle() ?></a>
+            </p>
+            <?php
+        }
+        ?>
+    </div>
+</div>

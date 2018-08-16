@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Wizzaro. All rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.options">
+            <block class="Wizzaro\MagentoFileWithAttachmentCustomOptionType\Block\Product\View\Options\Type\FileWithAttachment" name="product.info.options.filewithattachment" as="filewithattachment"
+                   template="Wizzaro_MagentoFileWithAttachmentCustomOptionType::product/view/options/type/filewithattachment.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

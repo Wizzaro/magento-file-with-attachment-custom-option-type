@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Wizzaro. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_options.xsd">
+    <option name="filewithattachment" label="File with Attachment" renderer="Wizzaro\MagentoFileWithAttachmentCustomOptionType\Block\Adminhtml\Product\Edit\Tab\Options\Type\FileWithAttachment">
+        <inputType name="filewithattachment" label="File with Attachment" />
+    </option>
+</config>

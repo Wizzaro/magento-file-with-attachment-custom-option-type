@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Wizzaro. All rights reserved.
+ */
+?>
+<?php /** @var $block \Wizzaro\MagentoFileWithAttachmentCustomOptionType\Block\Adminhtml\Product\Edit\Tab\Options\Type\FileWithAttachment */ ?>
+<script id="custom-option-file-type-template" type="text/x-magento-template">
+    <div id="product_option_<%- data.option_id %>_type_<%- data.group %>" class="fieldset">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th><?= /* @escapeNotVerified */ __('Attachment Info') ?></th>
+                <th><?= /* @escapeNotVerified */ __('Attachment Label') ?></th>
+                <th><?= /* @escapeNotVerified */ __('Attachment') ?></th>
+                <th><?= /* @escapeNotVerified */ __('Compatible File Extensions') ?></th>
+            </tr>
+            </thead>
+            <tr>
+                <td>
+                    <input name="product[options][<%- data.option_id %>][attachment_info]" class="input-text" type="text" value="<%- data.attachment_info %>">
+                </td>
+                <td>
+                    <input name="product[options][<%- data.option_id %>][attachment_label]" class="input-text" type="text" value="<%- data.attachment_label %>">
+                </td>
+                <td>
+                    <input name="product[options][<%- data.option_id %>][attachment_path]" class="input-text" type="file" value="<%- data.attachment_path %>">
+                </td>
+                <td>
+                    <input name="product[options][<%- data.option_id %>][file_extension]" class="input-text" type="text" value="<%- data.file_extension %>">
+                    <div class="note"><?php /* @escapeNotVerified */ echo __('Enter separated extensions, like: png, jpg, gif.') ?></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</script>

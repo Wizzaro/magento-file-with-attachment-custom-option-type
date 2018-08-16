@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Wizzaro. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="wizzaro_magentofilewithattachmentcustomoptiontype" frontName="wizzaro_magentofilewithattachmentcustomoptiontype">
+            <module name="Wizzaro_MagentoFileWithAttachmentCustomOptionType" />
+        </route>
+    </router>
+</config>
